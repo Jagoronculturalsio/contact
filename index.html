@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAGORON - Contact Us</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN for Contact Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+        .nav-button:hover {
+            color: #4f46e5;
+            background-color: #eef2ff;
+        }
+        /* Highlight style for active navigation links */
+        .nav-active {
+            background-color: #4f46e5; /* indigo-600 */
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .nav-active:hover {
+            background-color: #4338ca; /* indigo-700 */
+            color: #ffffff;
+        }
+        .contact-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div id="app" class="container mx-auto p-4 md:p-8">
+
+        <!-- Navigation Bar (Identical to others, but 'Contact' is active) -->
+        <header class="flex flex-col md:flex-row justify-between items-center bg-white p-4 md:p-6 rounded-xl shadow-lg mb-12 sticky top-0 z-50">
+            
+            <!-- Left Group: JAGORON and Home -->
+            <div class="flex flex-col md:flex-row items-center mb-4 md:mb-0">
+                <!-- JAGORON Text -->
+                <div class="text-3xl font-extrabold text-indigo-600 tracking-wider mb-2 md:mb-0 md:mr-6">
+                    <!-- Updated: Link to Home page URL -->
+                    <a href="https://vdoadtr.github.io/JAGORON-Home/">JAGORON</a>
+                </div>
+                <!-- Home Button (Standard) -->
+                <a href="https://vdoadtr.github.io/JAGORON-Home/" id="homeButton" 
+                   class="nav-button px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">
+                    Home
+                </a>
+            </div>
+            
+            <!-- Right Group: Nav Links (About, Contact, Address, Ticket) -->
+            <nav class="flex flex-wrap justify-center space-x-2 md:space-x-4 font-semibold">
+                <!-- Updated: Link to About page URL -->
+                <a href="https://vdoadtr.github.io/JAGORON-About/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">About</a>
+                <!-- Contact Button (Highlighted/Active) -->
+                <!-- Updated: Link to Contact page URL -->
+                <a href="https://vdoadtr.github.io/JAGORON-Contact/" class="nav-button nav-active px-4 py-2 rounded-lg transition duration-300">Contact</a>
+                <!-- Links below point to conceptual file names -->
+                <!-- Updated: Link to Address page URL -->
+                <a href="https://vdoadtr.github.io/JAGORON-Address/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Address</a>
+                <!-- TickeT button - Standard style, link is handled by JS -->
+                <button id="navTicketButton" 
+                    class="nav-button text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-300 shadow-sm border border-gray-200"
+                    onclick="handleTicketClick()">
+                    Ticket
+                </button>
+            </nav>
+        </header>
+
+        <main class="space-y-12">
+
+            <!-- Title Section -->
+            <section class="text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-2">
+                    Connect with <span class="text-indigo-600">JAGORON</span>
+                </h1>
+                <p class="text-xl text-gray-500">We're here to answer your questions and hear your suggestions.</p>
+            </section>
+
+            <!-- Contact Grid: Form and Info Cards -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- 1. Contact Form (Spans 2 columns on large screens) -->
+                <section id="contact-form" class="lg:col-span-2 contact-card p-6 md:p-10">
+                    <h2 class="text-3xl font-bold text-gray-700 mb-6">Send Us a Message</h2>
+                    <form id="jagoronContactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                                placeholder="Your Name">
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                                placeholder="youremail@example.com">
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <select id="subject" name="subject"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                                <option value="general">General Inquiry</option>
+                                <option value="sponsorship">Sponsorship/Partnership</option>
+                                <option value="ticketing">Ticketing Support</option>
+                                <option value="press">Press/Media Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                                placeholder="Write your detailed message here..."></textarea>
+                        </div>
+
+                        <button type="submit" 
+                            class="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition duration-300 shadow-md">
+                            Submit Message
+                        </button>
+                        
+                        <!-- Submission Status Message Box -->
+                        <div id="statusMessage" class="mt-4 p-3 rounded-lg text-center hidden"></div>
+
+                    </form>
+                </section>
+
+                <!-- 2. Information Cards (Spans 1 column) -->
+                <section class="space-y-6">
+                    
+                    <!-- Card 1: Email -->
+                    <div class="contact-card p-6 flex items-start space-x-4">
+                        <i data-lucide="mail" class="w-6 h-6 text-indigo-500 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-700">Email Us</h3>
+                            <p class="text-gray-500">For general inquiries and information.</p>
+                            <a href="mailto:info@jagoron.org" class="text-indigo-600 font-medium hover:underline">info@jagoron.org</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2: Phone -->
+                    <div class="contact-card p-6 flex items-start space-x-4">
+                        <i data-lucide="phone" class="w-6 h-6 text-indigo-500 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-700">Call Support</h3>
+                            <p class="text-gray-500">Available Mon-Fri, 10am - 5pm (IST).</p>
+                            <a href="tel:+919876543210" class="text-indigo-600 font-medium hover:underline">+91 9876 543 210</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3: Social Media -->
+                    <div class="contact-card p-6 flex items-start space-x-4">
+                        <i data-lucide="instagram" class="w-6 h-6 text-indigo-500 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-700">Follow Us</h3>
+                            <p class="text-gray-500">Stay updated on social media platforms.</p>
+                            <div class="flex space-x-3 mt-1">
+                                <a href="https://facebook.com/jagoron" target="_blank" class="text-gray-500 hover:text-indigo-600 transition duration-150" aria-label="Facebook">
+                                    <i data-lucide="facebook" class="w-6 h-6"></i>
+                                </a>
+                                <a href="https://instagram.com/jagoron_arts" target="_blank" class="text-gray-500 hover:text-indigo-600 transition duration-150" aria-label="Instagram">
+                                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                                </a>
+                                <a href="https://twitter.com/jagoron_x" target="_blank" class="text-gray-500 hover:text-indigo-600 transition duration-150" aria-label="Twitter">
+                                    <i data-lucide="twitter" class="w-6 h-6"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // --- Configuration & Initialization ---
+        // Updated: Using the external link provided by the user for the Ticket page
+        const TICKET_LINK = "https://vdoadtr.github.io/JAGORON-Ticket/"; 
+
+        // --- Firebase/Auth Setup (Mandatory in this environment) ---
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        // Note: Real form submission requires a backend/Firestore setup, 
+        // which is omitted here for single-file frontend execution.
+
+        // Initialize Lucide Icons
+        window.addEventListener('load', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // --- Interaction Logic: Ticket Button Handler ---
+        function handleTicketClick() {
+            // Function to handle the Ticket button, ensuring it opens in the SAME tab.
+            window.location.href = TICKET_LINK;
+        }
+        
+        // --- Interaction Logic: Form Submission ---
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            const form = document.getElementById('jagoronContactForm');
+            const statusMessage = document.getElementById('statusMessage');
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            // Simulate form submission process
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            statusMessage.classList.add('hidden');
+
+            // Simulate a successful API call delay
+            setTimeout(() => {
+                // Clear the form fields
+                form.reset(); 
+
+                // Show success message
+                statusMessage.textContent = 'Thank you! Your message has been sent successfully. We will respond within 48 hours.';
+                statusMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+                statusMessage.classList.add('bg-green-100', 'text-green-700');
+
+                // Reset button after a short delay
+                setTimeout(() => {
+                    submitButton.textContent = 'Submit Message';
+                    submitButton.disabled = false;
+                }, 1000);
+            }, 2000); // 2 second delay simulation
+        }
+
+    </script>
+</body>
+</html>
