@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAGORON - Contact Us</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Lucide Icons CDN for Contact Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN for Contact Icons --><script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -35,39 +32,43 @@
             padding: 2rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+        /* Custom style for circular social buttons */
+        .social-icon-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.5rem; /* w-14 */
+            height: 3.5rem; /* h-14 */
+            border-radius: 9999px; /* rounded-full */
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        /* Specific Hover Effects for Social Icons */
+        .yt-icon:hover { background-color: #c53030; color: white; } /* dark red */
+        .ig-icon:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); transform: scale(1.1); box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.2); }
+        .fb-icon:hover { background-color: #1c50a1; color: white; } /* darker blue */
+        .wa-icon:hover { background-color: #067c64; color: white; } /* darker green */
     </style>
 </head>
 <body class="min-h-screen">
     <div id="app" class="container mx-auto p-4 md:p-8">
 
-        <!-- Navigation Bar (Identical to others, but 'Contact' is active) -->
-        <header class="flex flex-col md:flex-row justify-between items-center bg-white p-4 md:p-6 rounded-xl shadow-lg mb-12 sticky top-0 z-50">
+        <!-- Navigation Bar (Contact is active) --><header class="flex flex-col md:flex-row justify-between items-center bg-white p-4 md:p-6 rounded-xl shadow-lg mb-12 sticky top-0 z-50">
             
-            <!-- Left Group: JAGORON and Home -->
-            <div class="flex flex-col md:flex-row items-center mb-4 md:mb-0">
-                <!-- JAGORON Text -->
+            <!-- Left Group: JAGORON and Home --><div class="flex flex-col md:flex-row items-center mb-4 md:mb-0">
                 <div class="text-3xl font-extrabold text-indigo-600 tracking-wider mb-2 md:mb-0 md:mr-6">
-                    <!-- Updated: Link to Home page URL -->
-                    <a href="https://vdoadtr.github.io/JAGORON-Home/">JAGORON</a>
+                    <a href="https://jagoronculturalsio.github.io/home/">JAGORON</a>
                 </div>
-                <!-- Home Button (Standard) -->
-                <a href="https://vdoadtr.github.io/JAGORON-Home/" id="homeButton" 
+                <a href="https://jagoronculturalsio.github.io/home/" id="homeButton" 
                    class="nav-button px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">
                     Home
                 </a>
             </div>
             
-            <!-- Right Group: Nav Links (About, Contact, Address, Ticket) -->
-            <nav class="flex flex-wrap justify-center space-x-2 md:space-x-4 font-semibold">
-                <!-- Updated: Link to About page URL -->
-                <a href="https://vdoadtr.github.io/JAGORON-About/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">About</a>
-                <!-- Contact Button (Highlighted/Active) -->
-                <!-- Updated: Link to Contact page URL -->
-                <a href="https://vdoadtr.github.io/JAGORON-Contact/" class="nav-button nav-active px-4 py-2 rounded-lg transition duration-300">Contact</a>
-                <!-- Links below point to conceptual file names -->
-                <!-- Updated: Link to Address page URL -->
-                <a href="https://vdoadtr.github.io/JAGORON-Address/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Address</a>
-                <!-- TickeT button - Standard style, link is handled by JS -->
+            <!-- Right Group: Nav Links --><nav class="flex flex-wrap justify-center space-x-2 md:space-x-4 font-semibold">
+                <a href="https://jagoronculturalsio.github.io/about/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">About</a>
+                <a href="https://jagoronculturalsio.github.io/contact/" class="nav-button nav-active px-4 py-2 rounded-lg transition duration-300">Contact</a>
+                <a href="https://jagoronculturalsio.github.io/address/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Address</a>
                 <button id="navTicketButton" 
                     class="nav-button text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-300 shadow-sm border border-gray-200"
                     onclick="handleTicketClick()">
@@ -78,124 +79,133 @@
 
         <main class="space-y-12">
 
-            <!-- Title Section -->
-            <section class="text-center">
+            <!-- Title Section --><section class="text-center">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-2">
                     Connect with <span class="text-indigo-600">JAGORON</span>
                 </h1>
                 <p class="text-xl text-gray-500">We're here to answer your questions and hear your suggestions.</p>
             </section>
 
-            <!-- Contact Grid: Form and Info Cards -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Contact Grid: Form (Now full width) --><div class="grid grid-cols-1 gap-8">
                 
-                <!-- 1. Contact Form (Spans 2 columns on large screens) -->
-                <section id="contact-form" class="lg:col-span-2 contact-card p-6 md:p-10">
+                <!-- 1. Contact Form --><section id="contact-form" class="lg:col-span-3 contact-card p-6 md:p-10">
                     <h2 class="text-3xl font-bold text-gray-700 mb-6">Send Us a Message</h2>
-                    <form id="jagoronContactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    
+                    <form id="jagoronContactForm" action="mailto:culturalsio@gmail.com" method="post" enctype="text/plain" class="space-y-6">
                         
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                            <input type="text" id="name" name="name" required
+                            <input type="text" id="name" name="Name" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
                                 placeholder="Your Name">
                         </div>
 
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                            <input type="email" id="email" name="email" required
+                            <input type="email" id="email" name="Reply-To" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
                                 placeholder="youremail@example.com">
                         </div>
 
                         <div>
                             <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-                            <select id="subject" name="subject"
+                            <select id="subject" name="Subject"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                                <option value="general">General Inquiry</option>
-                                <option value="sponsorship">Sponsorship/Partnership</option>
-                                <option value="ticketing">Ticketing Support</option>
-                                <option value="press">Press/Media Inquiry</option>
+                                <option value="General Inquiry from Website">General Inquiry</option>
+                                <option value="Sponsorship/Partnership Inquiry">Sponsorship/Partnership</option>
+                                <option value="Ticketing Support Request">Ticketing Support</option>
+                                <option value="Press/Media Inquiry">Press/Media Inquiry</option>
                             </select>
                         </div>
 
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
-                            <textarea id="message" name="message" rows="5" required
+                            <textarea id="message" name="Body" rows="5" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
                                 placeholder="Write your detailed message here..."></textarea>
                         </div>
 
-                        <button type="submit" 
-                            class="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition duration-300 shadow-md">
-                            Submit Message
-                        </button>
-                        
-                        <!-- Submission Status Message Box -->
-                        <div id="statusMessage" class="mt-4 p-3 rounded-lg text-center hidden"></div>
+                        <!-- Submit Button: Width set to center and style enhanced --><div class="flex justify-center pt-4">
+                            <button type="submit" 
+                                class="w-full max-w-sm bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition duration-300 shadow-xl transform hover:scale-[1.01] transition-transform duration-200">
+                                Submit Message
+                            </button>
+                        </div>
 
                     </form>
                 </section>
-
-                <!-- 2. Information Cards (Spans 1 column) -->
-                <section class="space-y-6">
-                    
-                    <!-- Card 1: Email -->
-                    <div class="contact-card p-6 flex items-start space-x-4">
-                        <i data-lucide="mail" class="w-6 h-6 text-indigo-500 flex-shrink-0 mt-1"></i>
-                        <div>
-                            <h3 class="text-lg font-bold text-gray-700">Email Us</h3>
-                            <p class="text-gray-500">For general inquiries and information.</p>
-                            <a href="mailto:info@jagoron.org" class="text-indigo-600 font-medium hover:underline">info@jagoron.org</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Card 2: Phone -->
-                    <div class="contact-card p-6 flex items-start space-x-4">
-                        <i data-lucide="phone" class="w-6 h-6 text-indigo-500 flex-shrink-0 mt-1"></i>
-                        <div>
-                            <h3 class="text-lg font-bold text-gray-700">Call Support</h3>
-                            <p class="text-gray-500">Available Mon-Fri, 10am - 5pm (IST).</p>
-                            <a href="tel:+919876543210" class="text-indigo-600 font-medium hover:underline">+91 9876 543 210</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Card 3: Social Media -->
-                    <div class="contact-card p-6 flex items-start space-x-4">
-                        <i data-lucide="instagram" class="w-6 h-6 text-indigo-500 flex-shrink-0 mt-1"></i>
-                        <div>
-                            <h3 class="text-lg font-bold text-gray-700">Follow Us</h3>
-                            <p class="text-gray-500">Stay updated on social media platforms.</p>
-                            <div class="flex space-x-3 mt-1">
-                                <a href="https://facebook.com/jagoron" target="_blank" class="text-gray-500 hover:text-indigo-600 transition duration-150" aria-label="Facebook">
-                                    <i data-lucide="facebook" class="w-6 h-6"></i>
-                                </a>
-                                <a href="https://instagram.com/jagoron_arts" target="_blank" class="text-gray-500 hover:text-indigo-600 transition duration-150" aria-label="Instagram">
-                                    <i data-lucide="instagram" class="w-6 h-6"></i>
-                                </a>
-                                <a href="https://twitter.com/jagoron_x" target="_blank" class="text-gray-500 hover:text-indigo-600 transition duration-150" aria-label="Twitter">
-                                    <i data-lucide="twitter" class="w-6 h-6"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </section>
             </div>
+            
+            <!-- 2. Direct Contact Links (For immediate contact: Call and Email) --><section id="direct-contact-links" class="mt-12">
+                <div class="contact-card p-6 flex flex-col items-center">
+                    <h3 class="text-xl font-bold text-gray-700 mb-6 text-center">Or Contact Us Directly</h3>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 w-full justify-center">
+
+                        <!-- Email Link --><a href="mailto:culturalsio@gmail.com" class="flex items-center space-x-2 text-indigo-600 font-medium hover:text-indigo-800 transition duration-150 p-3 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-center justify-center min-w-[160px] shadow-sm">
+                            <i data-lucide="mail" class="w-5 h-5 flex-shrink-0"></i>
+                            <span class="text-sm">culturalsio@gmail.com</span>
+                        </a>
+                        
+                        <!-- Phone Link --><a href="tel:+919083463914" class="flex items-center space-x-2 text-indigo-600 font-medium hover:text-indigo-800 transition duration-150 p-3 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-center justify-center min-w-[160px] shadow-sm">
+                            <i data-lucide="phone" class="w-5 h-5 flex-shrink-0"></i>
+                            <span class="text-sm">9083463914 (Call)</span>
+                        </a>
+
+                    </div>
+                    
+                </div>
+            </section>
+            
+            <!-- 3. Social Media Links (YouTube, Instagram, Facebook, WhatsApp Channel) --><section id="social-media-links" class="mt-12">
+                <div class="contact-card p-6 flex flex-col items-center">
+                    <h3 class="text-xl font-bold text-gray-700 mb-6 text-center">Follow Us on Social Media</h3>
+                    
+                    <div class="flex flex-wrap justify-center gap-6">
+
+                        <!-- YouTube Link --><a href="https://youtube.com/@jagaranculturalfestival" target="_blank" aria-label="YouTube Link"
+                           class="social-icon-button bg-red-100 text-red-600 yt-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 5H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2zm-9 11V8l6 4-6 4z"/>
+                            </svg>
+                        </a>
+                        
+                        <!-- Instagram Link --><a href="https://www.instagram.com/jagaranculturalfestival" target="_blank" aria-label="Instagram Link"
+                           class="social-icon-button bg-pink-100 text-pink-600">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        
+                        <!-- Facebook Link --><a href="https://www.facebook.com/jagaranculturalfestival" target="_blank" aria-label="Facebook Link"
+                           class="social-icon-button bg-blue-100 text-blue-600 fb-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                            </svg>
+                        </a>
+                        
+                        <!-- WhatsApp Channel Link (Now uses a PNG image for better compatibility) --><a href="https://whatsapp.com/channel/0029VbAofX4DDmFchboTLY3X" target="_blank" aria-label="WhatsApp Channel Link"
+                           class="social-icon-button bg-green-100 hover:bg-green-200 wa-icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" alt="WhatsApp Icon" class="w-8 h-8 flex-shrink-0 rounded-full">
+                        </a>
+
+                    </div>
+                    
+                </div>
+            </section>
 
         </main>
     </div>
 
     <script>
         // --- Configuration & Initialization ---
-        // Updated: Using the external link provided by the user for the Ticket page
-        const TICKET_LINK = "https://vdoadtr.github.io/JAGORON-Ticket/"; 
+        const TICKET_LINK = "https://jagoronculturalsio.github.io/ticket/"; 
 
         // --- Firebase/Auth Setup (Mandatory in this environment) ---
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        // Note: Real form submission requires a backend/Firestore setup, 
-        // which is omitted here for single-file frontend execution.
 
         // Initialize Lucide Icons
         window.addEventListener('load', () => {
@@ -208,37 +218,6 @@
         function handleTicketClick() {
             // Function to handle the Ticket button, ensuring it opens in the SAME tab.
             window.location.href = TICKET_LINK;
-        }
-        
-        // --- Interaction Logic: Form Submission ---
-        function handleFormSubmit(event) {
-            event.preventDefault(); // Prevent actual form submission
-
-            const form = document.getElementById('jagoronContactForm');
-            const statusMessage = document.getElementById('statusMessage');
-            const submitButton = form.querySelector('button[type="submit"]');
-
-            // Simulate form submission process
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            statusMessage.classList.add('hidden');
-
-            // Simulate a successful API call delay
-            setTimeout(() => {
-                // Clear the form fields
-                form.reset(); 
-
-                // Show success message
-                statusMessage.textContent = 'Thank you! Your message has been sent successfully. We will respond within 48 hours.';
-                statusMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700');
-                statusMessage.classList.add('bg-green-100', 'text-green-700');
-
-                // Reset button after a short delay
-                setTimeout(() => {
-                    submitButton.textContent = 'Submit Message';
-                    submitButton.disabled = false;
-                }, 1000);
-            }, 2000); // 2 second delay simulation
         }
 
     </script>
