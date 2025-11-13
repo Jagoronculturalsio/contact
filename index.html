@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAGORON - Book Your Tickets</title>
+    <title>JAGORON - Contact Us</title>
     <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Lucide Icons CDN for Ticket Icons --><script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons CDN for Contact Icons --><script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -26,18 +26,29 @@
             background-color: #4338ca; /* indigo-700 */
             color: #ffffff;
         }
-        .form-container {
+        .contact-card {
             background-color: white;
             border-radius: 1rem;
             padding: 2rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        .cta-button {
-            transition: background-color 0.3s ease, transform 0.1s;
+        /* Custom style for circular social buttons */
+        .social-icon-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.5rem; /* w-14 */
+            height: 3.5rem; /* h-14 */
+            border-radius: 9999px; /* rounded-full */
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        .cta-button:active {
-            transform: scale(0.98);
-        }
+        /* Specific Hover Effects for Social Icons */
+        .yt-icon:hover { background-color: #c53030; color: white; } /* dark red */
+        .ig-icon:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); transform: scale(1.1); box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.2); }
+        .fb-icon:hover { background-color: #1c50a1; color: white; } /* darker blue */
+        .wa-icon:hover { background-color: #067c64; color: white; } /* darker green */
+
         /* Ensures the header background is visible through the opacity, and the backdrop blur makes it smooth */
         .nav-transparent {
             /* Opacity set to 30% */
@@ -48,7 +59,7 @@
 </head>
 <body class="min-h-screen">
     
-    <!-- Header: Responsive, Sticky, Transparent Navigation Bar (Updated) -->
+    <!-- Header: Responsive, Sticky, Transparent Navigation Bar -->
     <header class="w-full flex justify-center sticky top-0 z-50 nav-transparent shadow-lg mb-12">
         <!-- Inner container to keep content centered and padded -->
         <div class="container mx-auto px-4 md:px-8 flex justify-between items-center py-4 md:py-6">
@@ -71,12 +82,12 @@
             <nav class="flex space-x-0.5 md:space-x-4 font-semibold">
                 <!-- All Right buttons: Smaller text and padding for mobile (text-xs px-1.5 py-0.5) -->
                 <a href="https://jagoronculturalsio.github.io/about/" class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">About</a>
-                <!-- Contact Link -->
-                <a href="https://jagoronculturalsio.github.io/contact/" class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Contact</a>
+                <!-- Contact Active Button -->
+                <a href="https://jagoronculturalsio.github.io/contact/" class="nav-button nav-active text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg transition duration-300">Contact</a>
                 <a href="https://jagoronculturalsio.github.io/address/" class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Location</a>
-                <!-- Ticket Active Button -->
+                <!-- Ticket Button -->
                 <button id="navTicketButton" 
-                    class="nav-button nav-active text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg transition duration-300"
+                    class="nav-button text-gray-700 text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg hover:bg-gray-100 transition duration-300 shadow-sm border border-gray-200"
                     onclick="handleTicketClick()">
                     Ticket
                 </button>
@@ -84,148 +95,152 @@
         </div>
     </header>
 
-    <div id="app" class="container mx-auto p-4 md:p-8 pt-0"> <!-- pt-0 added to negate mb-12 from header -->
+    <!-- Main Content Area: Retaining container mx-auto for content alignment -->
+    <div id="app" class="container mx-auto p-4 md:p-8 pt-0"> 
 
         <main class="space-y-12">
-            
-            <!-- WhatsApp Booking Form Section -->
-            <section class="max-w-xl mx-auto p-8 form-container shadow-2xl">
-                <h1 class="text-3xl font-extrabold text-gray-800 mb-2 text-center">
-                    Contact us on <span class="text-green-600">WhatsApp for Ticket Booking</span>
+
+            <!-- Title Section --><section class="text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-2">
+                    Connect with <span class="text-indigo-600">JAGORON</span>
                 </h1>
-                <p class="text-center text-gray-500 mb-8">
-                    Please fill out the form below. We will contact you via WhatsApp to confirm your ticket booking.
-                </p>
+                <p class="text-xl text-gray-500">We're here to answer your questions and hear your suggestions.</p>
+            </section>
 
-                <form id="whatsappBookingForm" class="space-y-6">
+            <!-- Contact Grid: Form (Now full width) --><div class="grid grid-cols-1 gap-8">
+                
+                <!-- 1. Contact Form --><section id="contact-form" class="lg:col-span-3 contact-card p-6 md:p-10">
+                    <h2 class="text-3xl font-bold text-gray-700 mb-6">Send Us a Message</h2>
                     
-                    <!-- Full Name -->
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                        <input type="text" id="name" name="name" 
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" 
-                            placeholder="Enter your full name" required>
-                    </div>
-                    
-                    <!-- Address Components (All stacked - No Grids) -->
-                    
-                    <!-- Village -->
-                    <div>
-                        <label for="village" class="block text-sm font-medium text-gray-700">Village</label>
-                        <input type="text" id="village" name="village" 
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" 
-                            placeholder="Village name" required>
-                    </div>
-                    <!-- P.O. -->
-                    <div>
-                        <label for="po" class="block text-sm font-medium text-gray-700">P.O. (Post Office)</label>
-                        <input type="text" id="po" name="po" 
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" 
-                            placeholder="Post Office name" required>
-                    </div>
-                    <!-- P.S. -->
-                    <div>
-                        <label for="ps" class="block text-sm font-medium text-gray-700">P.S. (Police Station)</label>
-                        <input type="text" id="ps" name="ps" 
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" 
-                            placeholder="Police Station name" required>
-                    </div>
-                    <!-- District -->
-                    <div>
-                        <label for="district" class="block text-sm font-medium text-gray-700">District</label>
-                        <input type="text" id="district" name="district" 
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" 
-                            placeholder="District name" required>
-                    </div>
-                    <!-- Pin Code -->
-                    <div>
-                        <label for="pin" class="block text-sm font-medium text-gray-700">Pin Code</label>
-                        <input type="text" id="pin" name="pin" 
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" 
-                            placeholder="6 digit PIN" pattern="[0-9]{6}" title="Six digit PIN code" required>
-                    </div>
+                    <form id="jagoronContactForm" action="mailto:culturalsio@gmail.com" method="post" enctype="text/plain" class="space-y-6">
+                        
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" id="name" name="Name" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                                placeholder="Your Name">
+                        </div>
 
-                    <!-- Submission Button -->
-                    <button type="submit"
-                        class="cta-button w-full bg-green-500 text-white font-bold py-3 rounded-lg hover:bg-green-600 shadow-lg flex items-center justify-center space-x-2">
-                        <!-- WhatsApp Icon (inline SVG for visibility) -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                            <path d="M12 7h.01"/>
-                            <path d="M11 11h2"/>
-                        </svg>
-                        <span>Contact us on WhatsApp for Booking</span>
-                    </button>
-                </form>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" name="Reply-To" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                                placeholder="youremail@example.com">
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <select id="subject" name="Subject"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                                <option value="General Inquiry from Website">General Inquiry</option>
+                                <option value="Sponsorship/Partnership Inquiry">Sponsorship/Partnership</option>
+                                <option value="Ticketing Support Request">Ticketing Support</option>
+                                <option value="Press/Media Inquiry">Press/Media Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                            <textarea id="message" name="Body" rows="5" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                                placeholder="Write your detailed message here..."></textarea>
+                        </div>
+
+                        <!-- Submit Button: Width set to center and style enhanced --><div class="flex justify-center pt-4">
+                            <button type="submit" 
+                                class="w-full max-w-sm bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition duration-300 shadow-xl transform hover:scale-[1.01] transition-transform duration-200">
+                                Submit Message
+                            </button>
+                        </div>
+
+                    </form>
+                </section>
+            </div>
+            
+            <!-- 2. Direct Contact Links (For immediate contact: Call and Email) --><section id="direct-contact-links" class="mt-12">
+                <div class="contact-card p-6 flex flex-col items-center">
+                    <h3 class="text-xl font-bold text-gray-700 mb-6 text-center">Or Contact Us Directly</h3>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 w-full justify-center">
+
+                        <!-- Email Link --><a href="mailto:culturalsio@gmail.com" class="flex items-center space-x-2 text-indigo-600 font-medium hover:text-indigo-800 transition duration-150 p-3 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-center justify-center min-w-[160px] shadow-sm">
+                            <i data-lucide="mail" class="w-5 h-5 flex-shrink-0"></i>
+                            <span class="text-sm">culturalsio@gmail.com</span>
+                        </a>
+                        
+                        <!-- Phone Link --><a href="tel:+919083463914" class="flex items-center space-x-2 text-indigo-600 font-medium hover:text-indigo-800 transition duration-150 p-3 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-center justify-center min-w-[160px] shadow-sm">
+                            <i data-lucide="phone" class="w-5 h-5 flex-shrink-0"></i>
+                            <span class="text-sm">9083463914 (Call)</span>
+                        </a>
+
+                    </div>
+                    
+                </div>
+            </section>
+            
+            <!-- 3. Social Media Links (YouTube, Instagram, Facebook, WhatsApp Channel) --><section id="social-media-links" class="mt-12">
+                <div class="contact-card p-6 flex flex-col items-center">
+                    <h3 class="text-xl font-bold text-gray-700 mb-6 text-center">Follow Us on Social Media</h3>
+                    
+                    <div class="flex flex-wrap justify-center gap-6">
+
+                        <!-- YouTube Link --><a href="https://youtube.com/@jagaranculturalfestival" target="_blank" aria-label="YouTube Link"
+                           class="social-icon-button bg-red-100 text-red-600 yt-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 5H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2zm-9 11V8l6 4-6 4z"/>
+                            </svg>
+                        </a>
+                        
+                        <!-- Instagram Link --><a href="https://www.instagram.com/jagaranculturalfestival" target="_blank" aria-label="Instagram Link"
+                           class="social-icon-button bg-pink-100 text-pink-600">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        
+                        <!-- Facebook Link --><a href="https://www.facebook.com/jagaranculturalfestival" target="_blank" aria-label="Facebook Link"
+                           class="social-icon-button bg-blue-100 text-blue-600 fb-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                            </svg>
+                        </a>
+                        
+                        <!-- WhatsApp Channel Link (Now uses a PNG image for better compatibility) --><a href="https://whatsapp.com/channel/0029VbAofX4DDmFchboTLY3X" target="_blank" aria-label="WhatsApp Channel Link"
+                           class="social-icon-button bg-green-100 hover:bg-green-200 wa-icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" alt="WhatsApp Icon" class="w-8 h-8 flex-shrink-0 rounded-full">
+                        </a>
+
+                    </div>
+                    
+                </div>
             </section>
 
         </main>
     </div>
 
     <script>
-        // --- Configuration ---
-        const WHATSAPP_NUMBER = "7980784954";
-        const WHATSAPP_FORM_ID = "whatsappBookingForm";
+        // --- Configuration & Initialization ---
+        const TICKET_LINK = "https://jagoronculturalsio.github.io/ticket/"; 
 
         // --- Firebase/Auth Setup (Mandatory in this environment) ---
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        // Note: Included for environment compliance.
 
-        // --- Interaction Logic: Main Ticket Button Handler ---
-        function handleTicketClick() {
-            // Since this is the active page, the navigation button reloads the page.
-            window.location.href = "https://jagoronculturalsio.github.io/ticket/";
-        }
-
-        // --- Interaction Logic: WhatsApp Form Handler (New Logic) ---
-        function handleFormSubmit(event) {
-            event.preventDefault(); // Stop default form submission
-
-            const name = document.getElementById('name').value;
-            const village = document.getElementById('village').value;
-            const po = document.getElementById('po').value;
-            const ps = document.getElementById('ps').value;
-            const district = document.getElementById('district').value;
-            const pin = document.getElementById('pin').value;
-            
-            // Construct the message (all in English)
-            const message = encodeURIComponent(
-                `JAGORON Festival Ticket Booking Inquiry (WhatsApp)\n\n` +
-                `1. Name: ${name}\n` +
-                `2. Village: ${village}\n` +
-                `3. P.O.: ${po}\n` +
-                `4. P.S.: ${ps}\n` +
-                `5. District: ${district}\n` +
-                `6. Pin Code: ${pin}\n\n` +
-                `Please let me know the next steps for ticket booking. Thank you.`
-            );
-
-            // Construct the WhatsApp API URL
-            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-
-            // Redirect to the WhatsApp link
-            window.location.href = whatsappUrl;
-
-            console.log("Redirecting to WhatsApp with booking details.");
-        }
-
-
-        // --- Initialization ---
+        // Initialize Lucide Icons
         window.addEventListener('load', () => {
-            // Initialize Lucide Icons
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
-            // Ensure the ticket button is visible if it's the active page
-            // document.getElementById('navTicketButton').classList.add('nav-active'); // This is now handled directly in HTML
-            
-            // Attach the new form submission handler
-            const form = document.getElementById(WHATSAPP_FORM_ID);
-            if (form) {
-                form.addEventListener('submit', handleFormSubmit);
-            }
         });
+
+        // --- Interaction Logic: Ticket Button Handler ---
+        function handleTicketClick() {
+            // Function to handle the Ticket button, ensuring it opens in the SAME tab.
+            window.location.href = TICKET_LINK;
+        }
+
     </script>
 </body>
 </html>
