@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAGORON - Contact Us</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Lucide Icons CDN for Contact Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN for Contact Icons --><script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -51,53 +48,68 @@
         .ig-icon:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); transform: scale(1.1); box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.2); }
         .fb-icon:hover { background-color: #1c50a1; color: white; } /* darker blue */
         .wa-icon:hover { background-color: #067c64; color: white; } /* darker green */
+
+        /* Ensures the header background is visible through the opacity, and the backdrop blur makes it smooth */
+        .nav-transparent {
+            /* Opacity set to 30% */
+            background-color: rgba(255, 255, 255, 0.3); 
+            backdrop-filter: blur(8px); /* Add a slight blur effect for modern look */
+        }
     </style>
 </head>
 <body class="min-h-screen">
-    <div id="app" class="container mx-auto p-4 md:p-8">
-
-        <!-- Navigation Bar (Contact is active) -->
-        <header class="flex flex-col md:flex-row justify-between items-center bg-white p-4 md:p-6 rounded-xl shadow-lg mb-12 sticky top-0 z-50">
+    
+    <!-- Header: Responsive, Sticky, Transparent Navigation Bar -->
+    <header class="w-full flex justify-center sticky top-0 z-50 nav-transparent shadow-lg mb-12">
+        <!-- Inner container to keep content centered and padded -->
+        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center py-4 md:py-6">
             
-            <!-- Left Group: JAGORON and Home -->
-            <div class="flex flex-col md:flex-row items-center mb-4 md:mb-0">
-                <div class="text-3xl font-extrabold text-indigo-600 tracking-wider mb-2 md:mb-0 md:mr-6">
+            <!-- Left Group: JAGORON (Hidden Mobile) and Home Button -->
+            <div class="flex items-center">
+                <!-- JAGORON Text: Hidden on mobile, visible from md breakpoint -->
+                <div class="hidden md:block text-3xl font-extrabold text-indigo-600 tracking-wider md:mr-6">
                     <a href="https://jagoronculturalsio.github.io/home/">JAGORON</a>
                 </div>
+                <!-- Home Button: Smaller text and padding for mobile (text-xs px-1.5 py-0.5) -->
                 <a href="https://jagoronculturalsio.github.io/home/" id="homeButton" 
-                   class="nav-button px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">
+                   class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">
                     Home
                 </a>
             </div>
             
-            <!-- Right Group: Nav Links -->
-            <nav class="flex flex-wrap justify-center space-x-2 md:space-x-4 font-semibold">
-                <a href="https://jagoronculturalsio.github.io/about/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">About</a>
-                <a href="https://jagoronculturalsio.github.io/contact/" class="nav-button nav-active px-4 py-2 rounded-lg transition duration-300">Contact</a>
-                <a href="https://jagoronculturalsio.github.io/address/" class="nav-button p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Location</a>
+            <!-- Right Group: Nav Links (About, Contact, Location, Ticket) -->
+            <!-- Reduced space-x to 0.5 for tight mobile fit -->
+            <nav class="flex space-x-0.5 md:space-x-4 font-semibold">
+                <!-- All Right buttons: Smaller text and padding for mobile (text-xs px-1.5 py-0.5) -->
+                <a href="https://jagoronculturalsio.github.io/about/" class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">About</a>
+                <!-- Contact Active Button -->
+                <a href="https://jagoronculturalsio.github.io/contact/" class="nav-button nav-active text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg transition duration-300">Contact</a>
+                <a href="https://jagoronculturalsio.github.io/address/" class="nav-button text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition duration-300">Location</a>
+                <!-- Ticket Button -->
                 <button id="navTicketButton" 
-                    class="nav-button text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-300 shadow-sm border border-gray-200"
+                    class="nav-button text-gray-700 text-xs px-1.5 py-0.5 md:text-base md:px-4 md:py-2 rounded-lg hover:bg-gray-100 transition duration-300 shadow-sm border border-gray-200"
                     onclick="handleTicketClick()">
                     Ticket
                 </button>
             </nav>
-        </header>
+        </div>
+    </header>
+
+    <!-- Main Content Area: Retaining container mx-auto for content alignment -->
+    <div id="app" class="container mx-auto p-4 md:p-8 pt-0"> 
 
         <main class="space-y-12">
 
-            <!-- Title Section -->
-            <section class="text-center">
+            <!-- Title Section --><section class="text-center">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-2">
                     Connect with <span class="text-indigo-600">JAGORON</span>
                 </h1>
                 <p class="text-xl text-gray-500">We're here to answer your questions and hear your suggestions.</p>
             </section>
 
-            <!-- Contact Grid: Form (Now full width) -->
-            <div class="grid grid-cols-1 gap-8">
+            <!-- Contact Grid: Form (Now full width) --><div class="grid grid-cols-1 gap-8">
                 
-                <!-- 1. Contact Form -->
-                <section id="contact-form" class="lg:col-span-3 contact-card p-6 md:p-10">
+                <!-- 1. Contact Form --><section id="contact-form" class="lg:col-span-3 contact-card p-6 md:p-10">
                     <h2 class="text-3xl font-bold text-gray-700 mb-6">Send Us a Message</h2>
                     
                     <form id="jagoronContactForm" action="mailto:culturalsio@gmail.com" method="post" enctype="text/plain" class="space-y-6">
@@ -134,8 +146,7 @@
                                 placeholder="Write your detailed message here..."></textarea>
                         </div>
 
-                        <!-- Submit Button: Width set to center and style enhanced -->
-                        <div class="flex justify-center pt-4">
+                        <!-- Submit Button: Width set to center and style enhanced --><div class="flex justify-center pt-4">
                             <button type="submit" 
                                 class="w-full max-w-sm bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition duration-300 shadow-xl transform hover:scale-[1.01] transition-transform duration-200">
                                 Submit Message
@@ -146,21 +157,18 @@
                 </section>
             </div>
             
-            <!-- 2. Direct Contact Links (For immediate contact: Call and Email) -->
-            <section id="direct-contact-links" class="mt-12">
+            <!-- 2. Direct Contact Links (For immediate contact: Call and Email) --><section id="direct-contact-links" class="mt-12">
                 <div class="contact-card p-6 flex flex-col items-center">
                     <h3 class="text-xl font-bold text-gray-700 mb-6 text-center">Or Contact Us Directly</h3>
                     
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 w-full justify-center">
 
-                        <!-- Email Link -->
-                        <a href="mailto:culturalsio@gmail.com" class="flex items-center space-x-2 text-indigo-600 font-medium hover:text-indigo-800 transition duration-150 p-3 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-center justify-center min-w-[160px] shadow-sm">
+                        <!-- Email Link --><a href="mailto:culturalsio@gmail.com" class="flex items-center space-x-2 text-indigo-600 font-medium hover:text-indigo-800 transition duration-150 p-3 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-center justify-center min-w-[160px] shadow-sm">
                             <i data-lucide="mail" class="w-5 h-5 flex-shrink-0"></i>
                             <span class="text-sm">culturalsio@gmail.com</span>
                         </a>
                         
-                        <!-- Phone Link -->
-                        <a href="tel:+919083463914" class="flex items-center space-x-2 text-indigo-600 font-medium hover:text-indigo-800 transition duration-150 p-3 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-center justify-center min-w-[160px] shadow-sm">
+                        <!-- Phone Link --><a href="tel:+919083463914" class="flex items-center space-x-2 text-indigo-600 font-medium hover:text-indigo-800 transition duration-150 p-3 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-center justify-center min-w-[160px] shadow-sm">
                             <i data-lucide="phone" class="w-5 h-5 flex-shrink-0"></i>
                             <span class="text-sm">9083463914 (Call)</span>
                         </a>
@@ -170,23 +178,20 @@
                 </div>
             </section>
             
-            <!-- 3. NEW: Social Media Links (YouTube, Instagram, Facebook, WhatsApp Channel) -->
-            <section id="social-media-links" class="mt-12">
+            <!-- 3. Social Media Links (YouTube, Instagram, Facebook, WhatsApp Channel) --><section id="social-media-links" class="mt-12">
                 <div class="contact-card p-6 flex flex-col items-center">
                     <h3 class="text-xl font-bold text-gray-700 mb-6 text-center">Follow Us on Social Media</h3>
                     
                     <div class="flex flex-wrap justify-center gap-6">
 
-                        <!-- YouTube Link -->
-                        <a href="https://youtube.com/@jagaranculturalfestival" target="_blank" aria-label="YouTube Link"
+                        <!-- YouTube Link --><a href="https://youtube.com/@jagaranculturalfestival" target="_blank" aria-label="YouTube Link"
                            class="social-icon-button bg-red-100 text-red-600 yt-icon">
                             <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20 5H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2zm-9 11V8l6 4-6 4z"/>
                             </svg>
                         </a>
                         
-                        <!-- Instagram Link -->
-                        <a href="https://www.instagram.com/jagaranculturalfestival" target="_blank" aria-label="Instagram Link"
+                        <!-- Instagram Link --><a href="https://www.instagram.com/jagaranculturalfestival" target="_blank" aria-label="Instagram Link"
                            class="social-icon-button bg-pink-100 text-pink-600">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -195,16 +200,14 @@
                             </svg>
                         </a>
                         
-                        <!-- Facebook Link -->
-                        <a href="https://www.facebook.com/jagaranculturalfestival" target="_blank" aria-label="Facebook Link"
+                        <!-- Facebook Link --><a href="https://www.facebook.com/jagaranculturalfestival" target="_blank" aria-label="Facebook Link"
                            class="social-icon-button bg-blue-100 text-blue-600 fb-icon">
                             <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
                             </svg>
                         </a>
                         
-                        <!-- WhatsApp Channel Link (Image based for reliability) -->
-                        <a href="https://whatsapp.com/channel/0029VbAofX4DDmFchboTLY3X" target="_blank" aria-label="WhatsApp Channel Link"
+                        <!-- WhatsApp Channel Link (Now uses a PNG image for better compatibility) --><a href="https://whatsapp.com/channel/0029VbAofX4DDmFchboTLY3X" target="_blank" aria-label="WhatsApp Channel Link"
                            class="social-icon-button bg-green-100 hover:bg-green-200 wa-icon">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" alt="WhatsApp Icon" class="w-8 h-8 flex-shrink-0 rounded-full">
                         </a>
